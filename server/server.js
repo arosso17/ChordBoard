@@ -12,7 +12,7 @@ const User = require("./models/user.model");
 
 
 mongoose.connect(
-    "mongodb+srv://arosso:Hadlbr%401713@cluster0.jlf5f0j.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://arosso:Hadlbr%401713@cluster0.jlf5f0j.mongodb.net/",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
