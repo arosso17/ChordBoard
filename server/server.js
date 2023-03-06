@@ -3,12 +3,11 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const passportloal = require('passport-local').Strategy;
+const passportlocal = require('passport-local').Strategy;
 const cookieparser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const User = require("./models/user.model");
 
 
 mongoose.connect(
@@ -38,7 +37,7 @@ app.use(session({
 app.use(cookieparser("sammy"));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./passportConfig')(passport);
+//require('./passportConfig')(passport);
 
 app.get('/', (req, res) => {
     res.send(req);
