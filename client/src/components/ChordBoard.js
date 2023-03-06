@@ -1,6 +1,8 @@
+import "./ChordBoard.css";
+
 function ChordBoard() {
   return (
-    <div className="container">
+    <div className="chord-board-container">
       chord board
     </div>
   );
