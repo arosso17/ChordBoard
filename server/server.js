@@ -23,7 +23,6 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }));
-// app.use(express.json());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -37,10 +36,9 @@ app.use(session({
 app.use(cookieparser("sammy"));
 app.use(passport.initialize());
 app.use(passport.session());
-//require('./passportConfig')(passport);
 
 app.get('/', (req, res) => {
-    res.send(req);
+    res.send("Yuh");
 });
 
 app.listen(1337, () => {
