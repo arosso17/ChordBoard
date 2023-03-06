@@ -8,10 +8,10 @@ const cookieparser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-
+const dotenv = require('dotenv').config();
 
 mongoose.connect(
-    "mongodb+srv://arosso:Hadlbr%401713@cluster0.jlf5f0j.mongodb.net/",
+    process.env.MONGO_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -28,12 +28,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-    secret: "sammy",
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true
 }));
 
-app.use(cookieparser("sammy"));
+app.use(cookieparser(process.env.SECRET));
 app.use(passport.initialize());
 app.use(passport.session());
 
