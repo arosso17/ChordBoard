@@ -8,8 +8,8 @@ function TopBar() {
           <div className="content">
             <h1>CHORDBOARD</h1>
             <div className="account">
+              <button className="log-in">Login</button>
               <button className="sign-up">Sign Up</button>
-              <button className="log-in">Log In</button>
             </div>
           </div>
         </div>
