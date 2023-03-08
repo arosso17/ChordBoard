@@ -1,6 +1,8 @@
 import './App.css';
 import ChordBoard from './components/ChordBoard';
 import TopBar from './components/TopBar';
+import {Login} from './components/Login';
+import {Register} from './components/Register';
 import { Route, Routes } from 'react-router-dom';
 
 
@@ -11,8 +13,8 @@ function App() {
       <div className="Content">
         <Routes>
           <Route path="/" element={<ChordBoard />} />
-          <Route path="/login" element={<h1>Login screen</h1>} />
-          <Route path="/register" element={<h1>Register screen</h1>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </div>

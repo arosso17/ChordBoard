@@ -8,7 +8,10 @@ const cookieparser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const User = require("./models/user.model");
 const dotenv = require('dotenv').config();
+require('./passportConfig')(passport);
+
 
 mongoose.connect(
     process.env.MONGO_URI,
@@ -79,7 +82,6 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send("Yuh");
 });
 
 app.listen(1337, () => {
