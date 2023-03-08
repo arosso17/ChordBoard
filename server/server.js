@@ -37,6 +37,47 @@ app.use(cookieparser(process.env.SECRET));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.post('/login', (req, res, next) => {
+    passport.authenticate("local", (err, user) => {
+        if (err) console.log(err);
+        if (!user) res.send("No user exists");
+        else {
+            req.logIn(user, err => {
+                if (err) console.log(err)
+                res.send("success");
+                console.log(req.user);
+            })
+        }
+    })(req, res, next);
+});
+
+app.post('/register', (req, res) => {
+    try{
+    User.findOne({username: req.body.username}).then( async (doc, err) => {
+        if (err) console.log(err);
+        if (doc) res.send("User alredy Exists");
+        if (!doc) {
+            const hashedPass = await bcrypt.hash(req.body.password, 10);
+
+            const newUser = new User({
+                username: req.body.username,
+                password: hashedPass
+            });
+            await newUser.save();
+            console.log()
+            res.send("user created")
+        }
+    })
+    }
+    catch {
+        console.log(err);
+    }
+});
+
+app.get('/user', (req, res) => {
+    res.send(req.user);
+});
+
 app.get('/', (req, res) => {
     res.send("Yuh");
 });
