@@ -1,13 +1,26 @@
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import "./ChordBoard.css";
 
 function ChordBoard() {
-  let { state } = useLocation();
-  if (!state) { state = {username: "Guest", password: ""}};
+  const [data, setData] = useState('')
+  const getUser = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:1337/user",
+    }).then((res) => setData(res.data))
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <div className="chord-board-container">
       chord board <br />
-      Hello {state.username}!
+      Hello {data.username}!
     </div>
   );
 }

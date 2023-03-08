@@ -20,7 +20,7 @@ export function Login() {
       url: "http://localhost:1337/login",
     }).then((res) => {
         console.log(res);
-        navigate(`/`, {state:{username: loginusername, password: loginpassword}})
+        navigate(`/`)
     });
   };
 
