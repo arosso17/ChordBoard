@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export function Login() {
+  const navigate = useNavigate()
   const[loginusername, setloginUsername] = useState('');
   const[loginpassword, setloginPassword] = useState('');
 
@@ -16,7 +18,10 @@ export function Login() {
       },
       withCredentials: true,
       url: "http://localhost:1337/login",
-    }).then((res) => console.log(res));
+    }).then((res) => {
+        console.log(res);
+        navigate(`/`, {state:{username: loginusername, password: loginpassword}})
+    });
   };
 
     return (

@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export function Register() {
-  const[registerusername, setregisterUsername] = useState('');
-  const[registerpassword, setregisterPassword] = useState('');
+    const navigate = useNavigate()
+    const[registerusername, setregisterUsername] = useState('');
+    const[registerpassword, setregisterPassword] = useState('');
   
-  const register = (event) => {
+    const register = (event) => {
     event.preventDefault();
   
     axios({
@@ -17,7 +19,10 @@ export function Register() {
       },
       withCredentials: true,
       url: "http://localhost:1337/register",
-    }).then((res) => console.log(res))
+    }).then((res) => {
+        console.log(res);
+        navigate(`/login`)
+    });
   };
     return (
     <div className='App'>
