@@ -1,5 +1,5 @@
 import "./TopBar.css";
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function TopBar() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function TopBar() {
 
         <div className="lower">
           <div className="content">
-            nav links
+            <NavLink className='navlink' to='/'>Home</NavLink>
           </div>
         </div>  
 

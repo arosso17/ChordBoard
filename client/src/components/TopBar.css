@@ -47,6 +47,15 @@
     letter-spacing: 0.05em;
 }
 
+.navlink {
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    color: lightskyblue;
+}
+
 .upper {
     background: #fff;
     color: #000;
